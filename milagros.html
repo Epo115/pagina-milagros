@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milagros Jaqueline Garcia Uraga</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f9d7e3, #d1e8ff, #fff9c4);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .cat-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M30,40 Q50,30 70,40 T90,50 Q80,60 70,55 T50,60 T30,55 T10,50 Q20,40 30,40" fill="%23FF6B6B"/><circle cx="35" cy="40" r="3" fill="white"/><circle cx="65" cy="40" r="3" fill="white"/><circle cx="35" cy="40" r="1" fill="black"/><circle cx="65" cy="40" r="1" fill="black"/><path d="M45,50 Q50,55 55,50" stroke="black" stroke-width="1" fill="none"/><path d="M20,20 Q40,5 60,20" stroke="%23FF6B6B" stroke-width="2" fill="none"/><path d="M80,20 Q85,15 90,20" stroke="%23FF6B6B" stroke-width="2" fill="none"/></svg>');
+            background-size: 200px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            animation: fadeInDown 1.5s ease;
+        }
+        
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: #e91e63;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 10%;
+            width: 80%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ff9800, transparent);
+            border-radius: 50%;
+        }
+        
+        .profile {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin: 40px 0;
+            animation: fadeInUp 1.5s ease;
+        }
+        
+        .photo-container {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .photo-frame {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff9800, #e91e63);
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .photo-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ffcdd2, #f8bbd0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .info {
+            flex: 2;
+            min-width: 300px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .info p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            animation: fadeIn 2s ease;
+        }
+        
+        .info p:nth-child(odd) {
+            color: #2196f3;
+            font-weight: 500;
+        }
+        
+        .info p:nth-child(even) {
+            color: #ff5722;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .hobbies {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            animation: fadeIn 2.5s ease;
+        }
+        
+        .hobbies h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #9c27b0;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .hobbies-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .hobby-card {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .hobby-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .hobby-card i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #ff6b6b;
+        }
+        
+        .media-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+            animation: fadeIn 3s ease;
+        }
+        
+        .video-container, .music-player {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        
+        .video-container h2, .music-player h2 {
+            font-family: 'Dancing Script', cursive;
+            color: #2196f3;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .player-controls button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: #ff6b6b;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .player-controls button:hover {
+            transform: scale(1.1);
+            background: #e91e63;
+        }
+        
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .animated-cats {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .cat {
+            position: absolute;
+            bottom: 10px;
+            width: 80px;
+            height: 60px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 60"><path d="M10,30 Q25,10 40,30 T70,30 Q85,10 100,30 L90,50 Q85,55 80,50 T60,40 T40,50 T20,40 T10,50 Z" fill="%23FF9800"/><circle cx="25" cy="20" r="5" fill="white"/><circle cx="35" cy="20" r="5" fill="white"/><circle cx="25" cy="20" r="2" fill="black"/><circle cx="35" cy="20" r="2" fill="black"/><path d="M30,35 Q35,40 40,35" stroke="black" stroke-width="1" fill="none"/><path d="M60,20 Q65,15 70,20" stroke="%23FF9800" stroke-width="2" fill="none"/><path d="M75,20 Q80,15 85,20" stroke="%23FF9800" stroke-width="2" fill="none"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: walk 15s linear infinite;
+            opacity: 0.7;
+        }
+        
+        @keyframes walk {
+            0% { left: -100px; }
+            100% { left: 100%; }
+        }
+        
+        .cat:nth-child(2) {
+            bottom: 40px;
+            width: 60px;
+            height: 45px;
+            animation: walk 20s linear infinite;
+            animation-delay: -5s;
+            opacity: 0.6;
+        }
+        
+        .cat:nth-child(3) {
+            bottom: 70px;
+            width: 40px;
+            height: 30px;
+            animation: walk 25s linear infinite;
+            animation-delay: -10s;
+            opacity: 0.5;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            .title {
+                font-size: 3.2rem;
+            }
+            
+            .profile {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .photo-frame {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cat-bg"></div>
+    
+    <div class="animated-cats">
+        <div class="cat" style="animation-delay: 0s;"></div>
+        <div class="cat" style="animation-delay: -3s;"></div>
+        <div class="cat" style="animation-delay: -6s;"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <h1 class="title">García Uraga Milagros Jaqueline</h1>
+        </header>
+        
+        <div class="profile">
+            <div class="photo-container">
+                <div class="photo-frame">
+                    <div class="photo-placeholder">
+                        <!-- REEMPLAZA LA RUTA CON TU FOTO -->
+                        <img src="yo.jpg" alt="Foto de Milagros" class="profile-photo">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info">
+                <p>Me llamo Milagros Jaqueline Garcia Uraga, nací el 5 de Enero del 2007 en Estados Unidos, actualmente tengo 18 años, vivo con mi mamá Reyna Uraga Rosales y mi papá Miguel Angel Garcia Rodriguez en el Estado de México.</p>
+                
+                <p>Tengo doble nacionalidad, estoy estudiando en la preparatoria Emiliano Zapata 115. Cuando llegamos a México yo tenía 1 año de edad por eso es que no recuerdo mucho, pero se que al principio fue difícil acoplarnos por que no sabíamos muchas cosas del país pero poco a poco pudimos tener mis papás y yo nuestra propia casa.</p>
+                
+                <p>Uno de mis más grandes anhelos es poder regresar a E.U y visitar a familia que me conocieron cuando era bebé que actualmente no he visto. Me gustaría poder seguir estudiando y ser aspirante seleccionada, estudiar la carrera de Relaciones Internacionales.</p>
+                
+                <p>Tengo 3 hermanos mayores por parte de mi mamá, me encantan los conejos, en una ocasión iba tener uno pero cuando fui a recogerlo se lo habían comido los gatos.</p>
+                
+                <p>Quiero entrar a trabajar en la embajada o en un lugar donde pueda conocer nuevas personas de otros lugares, países, quiero conocer Boston, tener mi propia casa y formar una bonita familia.</p>
+            </div>
+        </div>
+        
+        <div class="hobbies">
+            <h2>Mis Pasatiempos</h2>
+            <div class="hobbies-content">
+                <div class="hobby-card">
+                    <i class="fas fa-tv"></i>
+                    <h3>Series Coreanas</h3>
+                    <p>Me encanta ver series coreanas en mi tiempo libre</p>
+                </div>
+                <div class="hobby-card">
+                    <i class="fas fa-dragon"></i>
+                    <h3>Anime</h3>
+                    <p>Soy fanática del anime y la cultura japonesa</p>
+                </div>
+                <div class="hobby-card">
+                    <i class="fas fa-music"></i>
+                    <h3>Música</h3>
+                    <p>Me gustan Humbe y las canciones de los 2000 en inglés</p>
+                </div>
+                <div class="hobby-card">
+                    <i class="fas fa-cookie-bite"></i>
+                    <h3>Chocolate</h3>
+                    <p>Adoro el chocolate en todas sus formas</p>
+                </div>
+            </div>
+            <p style="margin-top: 20px; text-align: center; color: #ff5722; font-weight: 500;">Mi actor favorito es Cha Eun Woo, él es 10 años mayor que yo. Vino a dar un concierto a México pero yo no pude ir. Actualmente mido 1.67, espero ya no crecer más por que no me gusta ser alta. Tengo talasofobia y me dan miedo los perros.</p>
+        </div>
+        
+        <div class="media-section">
+            <div class="video-container">
+                <h2>Mi Actor Favorito</h2>
+                <div class="video-wrapper">
+                    <!-- REEMPLAZA ESTA URL CON TU VIDEO -->
+                    <iframe src="artista.mp4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <p style="text-align: center; margin-top: 15px; color: #2196f3;">Cha Eun Woo - Mi actor favorito</p>
+            </div>
+            
+            <div class="music-player">
+                <h2>Música de Fondo</h2>
+                <p style="text-align: center; margin-bottom: 20px;">Disfruta de esta canción mientras navegas</p>
+                <div class="player-controls">
+                    <button id="playBtn"><i class="fas fa-play"></i></button>
+                    <button id="pauseBtn"><i class="fas fa-pause"></i></button>
+                    <button id="stopBtn"><i class="fas fa-stop"></i></button>
+                </div>
+                <div class="volume-control">
+                    <i class="fas fa-volume-down"></i>
+                    <input type="range" id="volume" min="0" max="1" step="0.1" value="0.7">
+                    <i class="fas fa-volume-up"></i>
+                </div>
+                <!-- REEMPLAZA ESTA URL CON TU MÚSICA -->
+                <audio id="background-music" loop>
+                    <source src="musica.mp3" type="audio/mpeg">
+                </audio>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Página personal de García Uraga Milagros Jaqueline - Todos los derechos reservados &copy; 2025</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Control de música
+            const audio = document.getElementById('background-music');
+            const playBtn = document.getElementById('playBtn');
+            const pauseBtn = document.getElementById('pauseBtn');
+            const stopBtn = document.getElementById('stopBtn');
+            const volumeControl = document.getElementById('volume');
+            
+            playBtn.addEventListener('click', () => {
+                audio.play();
+            });
+            
+            pauseBtn.addEventListener('click', () => {
+                audio.pause();
+            });
+            
+            stopBtn.addEventListener('click', () => {
+                audio.pause();
+                audio.currentTime = 0;
+            });
+            
+            volumeControl.addEventListener('input', () => {
+                audio.volume = volumeControl.value;
+            });
+            
+            // Animación para los elementos al hacer scroll
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 1s ease forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.profile, .hobbies, .media-section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
